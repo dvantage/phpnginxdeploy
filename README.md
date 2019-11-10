@@ -1,6 +1,6 @@
 # phpnginxdeploy
 
-## Default command
+### Default command
 ```
 sudo ./phpnginxdeploy.sh domain.com 
 ```
