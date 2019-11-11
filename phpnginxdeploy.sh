@@ -98,7 +98,7 @@ case "$@" in
 		    case $yn in
 		        [Yy]* ) 
 		            echo "Выпускаю  HTTPS сертифкат с помощью certbot"
-		        	#sudo certbot --nginx -n -d $domain
+		            sudo certbot --nginx -n -d $domain
 		        	
 		        	
         	     	echo "Обновляю конфиг Nginx. Редирект с www включён."
