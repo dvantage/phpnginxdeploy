@@ -1,5 +1,5 @@
-# Auto-deploy for NGINX and PHP
-This script allows you to configure NGINX and HTTPS with one command.
+# Auto-deploy for NGINX, HTTPS and PHP
+This script allows you to configure NGINX with PHP and HTTPS with one command.
 
 Features:
 - NGINX configuration creation for current domain
