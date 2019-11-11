@@ -24,3 +24,8 @@ sudo ./phpnginxdeploy.sh domain.com configname
 ```
 sudo ./phpnginxdeploy.sh domain.com configname 7.4
 ```
+### To convert the line endings from DOS/Windows style to Unix style
+```
+sudo sudo apt-get install dos2unix
+dos2unix phpnginxdeploy.sh
+```
