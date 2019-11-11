@@ -6,6 +6,10 @@ Features:
 - Obtaining a HTTPS Certificate (need Certbot)
 - Сreating a directory for the site with configured rights
 
+### Make a file executable
+```
+chmod +x phpnginxdeploy.sh
+```
 ### Default command
 ```
 sudo ./phpnginxdeploy.sh domain.com 
