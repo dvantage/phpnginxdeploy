@@ -25,18 +25,17 @@ case "$@" in
         
         domain=$1
    
-		if [ -n "$2" ]
-		then
-		  confname=$2
-		else
-		   confname=$1
-		fi
-		
-		
-		if [ -n "$3" ]
-		then
-			phpversion=$3
-		fi
+	if [ -n "$2" ]
+	then
+	 	confname=$2
+	else
+	 	confname=$1
+	fi
+
+	if [ -n "$3" ]
+	then
+		phpversion=$3
+	fi
 
 
         echo "\nДобавляю хост в: /etc/nginx/sites-available/$confname"
