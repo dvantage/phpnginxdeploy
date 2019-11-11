@@ -97,15 +97,13 @@ case "$@" in
 		    read -p "Выпускаем HTTPS сетрификат? " yn
 		    case $yn in
 		        [Yy]* ) 
-		            echo "Выпускаю  HTTPS сертифкат с помощью certbot"
-		            sudo certbot --nginx -n -d $domain
-		        	
-		        	
-        	     	echo "Обновляю конфиг Nginx. Редирект с www включён."
+		           	echo "Выпускаю  HTTPS сертифкат с помощью certbot"
+		            	sudo certbot --nginx -n -d $domain
+
+        	     		echo "Обновляю конфиг Nginx"
 			        sudo rm /etc/nginx/sites-available/$confname
 			        sudo rm /etc/nginx/sites-enabled/$confname
-		        	
-		      
+
 		        	while true; do
 					    read -p "Делаем редирект с www? " yn
 					    case $yn in
@@ -126,9 +124,9 @@ case "$@" in
 						       	echo "	ssl_trusted_certificate /etc/letsencrypt/live/$domain/chain.pem;"
 						        echo "	include /etc/letsencrypt/options-ssl-nginx.conf;"
 						        echo "	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;"
-								echo "	return 301 https://$domain\$request_uri;"
-								echo "}"
-						 		exec 1>&3
+							echo "	return 301 https://$domain\$request_uri;"
+							echo "}"
+							exec 1>&3
 						 
 						 
 					        	break;;
@@ -140,7 +138,7 @@ case "$@" in
 					
 					
 					{
-							echo "#"
+						echo "#"
 				         	echo "# Redirect from HTTP to HTTPS"
 				         	echo "#"		        
 					        echo "server {"
@@ -149,8 +147,8 @@ case "$@" in
 					        echo "	listen               [::]:80;"
 					        echo "	return 301 https://$domain\$request_uri;"
 					        echo "}"
-							echo "	"
-							echo "#"
+						echo "	"
+						echo "#"
 				         	echo "#"
 				         	echo "#"
 					        echo "server {"
@@ -163,45 +161,43 @@ case "$@" in
 					       	echo "	ssl_trusted_certificate /etc/letsencrypt/live/$domain/chain.pem;"
 					        echo "	include /etc/letsencrypt/options-ssl-nginx.conf;"
 					        echo "	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;"
-							echo "	"
-							echo "	root $www_path$domain/html;"
-							echo "	index index.php index.html index.htm;"
-							echo "	" 
-							echo " 	location / {"
-							echo "      try_files \$uri \$uri/ /index.php?\$args;"
-							echo "	}"
-							echo "	"
-							echo " 	location ~ /\. {"
-							echo "      deny all;"
-							echo "	}"
-							echo "	"
-							echo "	error_page 404 /404.html;"
-							echo "	error_page 500 502 503 504 /50x.html;"
-							echo " 	location = /50x.html {"
-							echo "      root /usr/share/nginx/html;"
-							echo "	}"
-							echo "	"
-							echo " 	location ~ \.php$ {"
-							echo "      include snippets/fastcgi-php.conf;"
-							echo "      fastcgi_pass unix:/run/php/php$phpversion-fpm.sock;"
-							echo "	}"
-							echo "	"
-							echo " 	location = /favicon.ico { log_not_found off; access_log off; }"
-							echo " 	location = /robots.txt { log_not_found off; access_log off; allow all; }"
-							echo " 	location ~* \.(?:ico|css|gif|jpe?g|js|png|svg|woff|woff2)$ {"
-							echo "      expires max;"
-							echo "      log_not_found off;"
-							echo "	}"
-							echo "	"
-							echo " 	location ~* \.(ico)$ {"
-							echo "      expires 240h;"
-							echo "      log_not_found off;"
-							echo "	}"
-							echo "}"
+						echo "	"
+						echo "	root $www_path$domain/html;"
+						echo "	index index.php index.html index.htm;"
+						echo "	" 
+						echo " 	location / {"
+						echo "      try_files \$uri \$uri/ /index.php?\$args;"
+						echo "	}"
+						echo "	"
+						echo " 	location ~ /\. {"
+						echo "      deny all;"
+						echo "	}"
+						echo "	"
+						echo "	error_page 404 /404.html;"
+						echo "	error_page 500 502 503 504 /50x.html;"
+						echo " 	location = /50x.html {"
+						echo "      root /usr/share/nginx/html;"
+						echo "	}"
+						echo "	"
+						echo " 	location ~ \.php$ {"
+						echo "      include snippets/fastcgi-php.conf;"
+						echo "      fastcgi_pass unix:/run/php/php$phpversion-fpm.sock;"
+						echo "	}"
+						echo "	"
+						echo " 	location = /favicon.ico { log_not_found off; access_log off; }"
+						echo " 	location = /robots.txt { log_not_found off; access_log off; allow all; }"
+						echo " 	location ~* \.(?:ico|css|gif|jpe?g|js|png|svg|woff|woff2)$ {"
+						echo "      expires max;"
+						echo "      log_not_found off;"
+						echo "	}"
+						echo "	"
+						echo " 	location ~* \.(ico)$ {"
+						echo "      expires 240h;"
+						echo "      log_not_found off;"
+						echo "	}"
+						echo "}"
 					} >> /etc/nginx/sites-available/$confname
 
-					
-					
 					sudo ln -s /etc/nginx/sites-available/$confname /etc/nginx/sites-enabled/
 
 			        sleep 1
