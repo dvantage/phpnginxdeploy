@@ -6,6 +6,12 @@ Features:
 - Obtaining a HTTPS Certificate (need Certbot)
 - Сreating a directory for the site with configured rights
 
+
+### Download bash script
+```
+wget https://raw.githubusercontent.com/dvantage/phpnginxdeploy/master/phpnginxdeploy.sh
+```
+
 ### Make a file executable
 ```
 chmod +x phpnginxdeploy.sh
