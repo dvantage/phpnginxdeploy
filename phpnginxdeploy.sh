@@ -21,7 +21,7 @@ case "$@" in
         echo "\nСоздаю index.php "
         echo "Hello World" > $www_path$1/html/index.php
         chown -R $wwwuser:$wwwgroup /$www_path$1
-        chmod -R 0755 /$www_path$1
+        chmod -R 0775 /$www_path$1
 
         domain=$1
 
